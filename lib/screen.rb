@@ -1,9 +1,27 @@
-require 'pp'
 require_relative './player'
 
 module Screen
   def self.display(board)
-    pp board
+    grid   = board.grid
+    length = grid.size
+
+    grid.each do |row|
+      puts delimiter(length)
+      print '|'
+
+      row.each do |cell|
+        print cell ? " #{cell} |" : "   |"
+      end
+
+      puts
+    end
+
+    puts delimiter(length)
+    puts
+  end
+
+  def self.delimiter(length)
+    "+#{'---+' * length}"
   end
 
   def self.prompt(player)
