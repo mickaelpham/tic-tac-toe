@@ -1,0 +1,26 @@
+# Tic-Tac-Toe
+
+A classic game implemented in Ruby.
+
+## Getting started
+
+```sh
+git clone https://github.com/mickaelpham/tic-tac-toe
+cd tic-tac-toe
+bundle install
+bundle exec ruby play.rb
+```
+
+## Screenshots
+
+Player prompt
+![player-prompt](/img/01-player-prompt.png?raw=true "Player prompt")
+
+During the game
+![during-the-game](/img/02-during-the-game.png?raw=true "During the game")
+
+Victory Screen
+![victory](/img/03-victory.png?raw=true "Victory screen")
+
+Tie screen
+![tie-screen](/img/04-tie-screen.png?raw=true "Tie screen")
