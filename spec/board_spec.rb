@@ -76,10 +76,15 @@ RSpec.describe Board do
   end
 
   describe 'full?' do
-    let(:max_moves) { rows * cols }
+    let(:max_moves) { dimension ** 2 }
     subject         { board.full? }
 
     context 'not yet' do
+      specify { expect(subject).to eq(false) }
+    end
+
+    context 'almost' do
+      before  { board.instance_variable_set(:@moves, max_moves - 1) }
       specify { expect(subject).to eq(false) }
     end
 

@@ -19,4 +19,14 @@ module Screen
     puts
     Player.new(name, token)
   end
+
+  def self.victory(board, player)
+    display(board)
+    puts "#{player.name} won the game!"
+  end
+
+  def self.tie(board)
+    display(board)
+    puts "Nobody won..."
+  end
 end
