@@ -27,8 +27,6 @@ Player prompt
 
 During the game (1/2)
 ![screen-02](/img/screen-02.png?raw=true)
-
-During the game (2/2)
 ![screen-03](/img/screen-03.png?raw=true)
 
 Victory screen
