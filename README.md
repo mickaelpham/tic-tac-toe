@@ -11,6 +11,15 @@ bundle install
 bundle exec ruby play.rb
 ```
 
+## Tasks
+
+- [x] Display board, prompt for player names
+- [x] Board checks for victory or tie conditions
+- [x] Main game loop
+- [ ] Handle exception (input check)
+- [ ] Prompt for another game with the same players
+- [ ] Better test coverage
+
 ## Screenshots
 
 Player prompt
