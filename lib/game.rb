@@ -40,6 +40,8 @@ class Game
 
       next_player
     end
+
+    new_game if Screen.new_game?
   rescue Board::BoardError => error
     Screen.error(error)
     retry
@@ -56,5 +58,11 @@ class Game
     else
       @current_player += 1
     end
+  end
+
+  def new_game
+    @board          = Board.new(DEFAULT_BOARD_DIMENSION)
+    @current_player = 0
+    run # FIXME: possible stack overflow if we play enough games
   end
 end

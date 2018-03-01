@@ -55,4 +55,9 @@ module Screen
   def self.bye
     puts "\n\nQuitting Tic-Tac-Toe by Mickael Pham"
   end
+
+  def self.new_game?
+    puts "\n\nPlay another game? (y/N)"
+    gets.chomp.casecmp('y').zero?
+  end
 end
