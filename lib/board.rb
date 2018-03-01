@@ -17,14 +17,14 @@ class Board
   def initialize(dimension)
     raise InvalidDimension unless dimension.positive?
 
-    @grid  = Array.new(dimension) { Array.new(dimension, 0) }
+    @grid  = Array.new(dimension) { Array.new(dimension) }
     @moves = 0
   end
 
   def place(token, row, col)
     raise OutOfBoard, "row: #{row}; col: #{col}" if out?(row, col)
     target_row = grid[row]
-    raise TokenPresent unless target_row[col].zero?
+    raise TokenPresent if target_row[col]
     target_row[col]  = token
     @moves          += 1
   end
@@ -46,7 +46,7 @@ class Board
   def row?
     grid.each do |row|
       val = row[0]
-      next if val.zero?
+      next unless val
       return true if row.all? { |cell| cell == val }
     end
 
@@ -57,7 +57,7 @@ class Board
     first_row = grid[0]
 
     first_row.each_with_index do |val, col_index|
-      next if val.zero?
+      next unless val
       col = grid.collect { |row| row[col_index] }
       return true if col.all? { |cell| cell == val }
     end
@@ -67,7 +67,7 @@ class Board
 
   def main_diagonal?
     val = grid[0][0]
-    return false if val.zero?
+    return false unless val
 
     (1..(grid.size - 1 )).each do |index|
       return false if grid[index][index] != val
@@ -79,7 +79,7 @@ class Board
   def anti_diagonal?
     index = grid.size - 1
     val   = grid[index][0]
-    return false if val.zero?
+    return false unless val
 
     (1..index).each do |current|
       return false if grid[index - current][current] != val

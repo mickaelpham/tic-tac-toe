@@ -17,9 +17,9 @@ RSpec.describe Board do
     context 'standard size' do
       let(:expected_grid) do
         [
-          [0, 0, 0],
-          [0, 0, 0],
-          [0, 0, 0]
+          [nil, nil, nil],
+          [nil, nil, nil],
+          [nil, nil, nil]
         ]
       end
 
@@ -31,12 +31,12 @@ RSpec.describe Board do
 
       let(:expected_grid) do
         [
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0]
+          [nil, nil, nil, nil, nil, nil],
+          [nil, nil, nil, nil, nil, nil],
+          [nil, nil, nil, nil, nil, nil],
+          [nil, nil, nil, nil, nil, nil],
+          [nil, nil, nil, nil, nil, nil],
+          [nil, nil, nil, nil, nil, nil]
         ]
       end
 
@@ -45,20 +45,18 @@ RSpec.describe Board do
   end
 
   describe '#place' do
-    let(:token) { 1 }
+    let(:token) { 'X' }
     let(:row)   { 0 }
     let(:col)   { 0 }
 
     subject { board.place(token, row, col) }
 
     context 'valid move' do
-
-
       let(:expected_grid) do
         [
-          [1, 0, 0],
-          [0, 0, 0],
-          [0, 0, 0],
+          ['X', nil, nil],
+          [nil, nil, nil],
+          [nil, nil, nil],
         ]
       end
 
@@ -103,9 +101,9 @@ RSpec.describe Board do
     context 'without any moves' do
       let(:grid) do
         [
-          [0, 0, 0],
-          [0, 0, 0],
-          [0, 0, 0],
+          [nil, nil, nil],
+          [nil, nil, nil],
+          [nil, nil, nil],
         ]
       end
 
@@ -115,9 +113,9 @@ RSpec.describe Board do
     context 'with a row' do
       let(:grid) do
         [
-          [1, 1, 1],
-          [0, 0, 0],
-          [0, 0, 0],
+          ['X', 'X', 'X'],
+          [nil, nil, nil],
+          [nil, nil, nil],
         ]
       end
 
@@ -127,9 +125,9 @@ RSpec.describe Board do
     context 'with a column' do
       let(:grid) do
         [
-          [0, 1, 0],
-          [0, 1, 0],
-          [0, 1, 0]
+          [nil, 'X', nil],
+          [nil, 'X', nil],
+          [nil, 'X', nil]
         ]
       end
 
@@ -139,9 +137,9 @@ RSpec.describe Board do
     context 'with the main diagonal' do
       let(:grid) do
         [
-          [1, 0, 0],
-          [0, 1, 0],
-          [0, 0, 1]
+          ['X', nil, nil],
+          [nil, 'X', nil],
+          [nil, nil, 'X']
         ]
       end
 
@@ -151,9 +149,9 @@ RSpec.describe Board do
     context 'with the anti diagonal' do
       let(:grid) do
         [
-          [0, 0, 1],
-          [0, 1, 0],
-          [1, 0, 0]
+          [nil, nil, 'X'],
+          [nil, 'X', nil],
+          ['X', nil, nil]
         ]
       end
 
