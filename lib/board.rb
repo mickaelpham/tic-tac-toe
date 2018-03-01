@@ -44,12 +44,18 @@ class Board
   end
 
   def row?
-    grid.each { |row| return true if row.uniq.first }
+    grid.each do |row|
+      uniq = row.uniq
+      return true if uniq.first && uniq.size == 1
+    end
     false
   end
 
   def col?
-    grid.size.times { |index| return true if column(index).uniq.first }
+    grid.size.times do |index|
+      uniq = column(index).uniq
+      return true if uniq.first && uniq.size == 1
+    end
     false
   end
 
@@ -59,15 +65,18 @@ class Board
   end
 
   def main_diagonal?
-    grid.collect.with_index do |_val, index|
+    uniq = grid.collect.with_index do |_val, index|
       grid[index][index]
-    end.uniq.first
+    end.uniq
+
+    uniq.first && uniq.size == 1
   end
 
   def anti_diagonal?
-    grid.collect.with_index do |_val, index|
-      opposite_index = grid.size - 1 - index
-      grid[opposite_index][opposite_index]
-    end.uniq.first
+    uniq = grid.collect.with_index do |_val, index|
+      grid[grid.size - 1 - index][index]
+    end.uniq
+
+    uniq.first && uniq.size == 1
   end
 end

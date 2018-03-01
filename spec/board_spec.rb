@@ -115,6 +115,18 @@ RSpec.describe Board do
       specify { expect(subject).to be_falsey }
     end
 
+    context 'with a single move' do
+      let(:grid) do
+        [
+          ['X', nil, nil],
+          [nil, nil, nil],
+          [nil, nil, nil]
+        ]
+      end
+
+      specify { expect(subject).to be_falsey }
+    end
+
     context 'with a row' do
       let(:grid) do
         [

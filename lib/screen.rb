@@ -4,15 +4,17 @@ module Screen
   def self.display(board)
     clear
 
-    grid   = board.grid
-    length = grid.size
+    grid     = board.grid
+    length   = grid.size
+    cell_num = 1
 
     grid.each do |row|
       puts delimiter(length)
       print '|'
 
       row.each do |cell|
-        print cell ? " #{cell} |" : "   |"
+        print cell ? " #{cell} |" : " #{cell_num} |"
+        cell_num += 1
       end
 
       puts
@@ -28,7 +30,7 @@ module Screen
 
   def self.prompt(player)
     puts "[#{player.name}] Place token (#{player.token}) at: "
-    gets.chomp.to_i
+    gets.chomp.to_i - 1 # we offer human-friendly interaction
   end
 
   def self.create_player(number)
