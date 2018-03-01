@@ -80,12 +80,12 @@ RSpec.describe Board do
     subject         { board.full? }
 
     context 'not yet' do
-      specify { expect(subject).to eq(false) }
+      specify { expect(subject).to be_falsey }
     end
 
     context 'almost' do
       before  { board.instance_variable_set(:@moves, max_moves - 1) }
-      specify { expect(subject).to eq(false) }
+      specify { expect(subject).to be_falsey }
     end
 
     context 'definitely' do
@@ -95,7 +95,7 @@ RSpec.describe Board do
         end
       end
 
-      specify { expect(subject).to eq(true) }
+      specify { expect(subject).to be_truthy }
     end
   end
 
@@ -112,7 +112,7 @@ RSpec.describe Board do
         ]
       end
 
-      specify { expect(subject).to be(false) }
+      specify { expect(subject).to be_falsey }
     end
 
     context 'with a row' do
@@ -124,7 +124,7 @@ RSpec.describe Board do
         ]
       end
 
-      specify { expect(subject).to be(true) }
+      specify { expect(subject).to be_truthy }
     end
 
     context 'with a column' do
@@ -136,7 +136,7 @@ RSpec.describe Board do
         ]
       end
 
-      specify { expect(subject).to be(true) }
+      specify { expect(subject).to be_truthy }
     end
 
     context 'with the main diagonal' do
@@ -148,7 +148,7 @@ RSpec.describe Board do
         ]
       end
 
-      specify { expect(subject).to be(true) }
+      specify { expect(subject).to be_truthy }
     end
 
     context 'with the anti diagonal' do
@@ -160,7 +160,7 @@ RSpec.describe Board do
         ]
       end
 
-      specify { expect(subject).to be(true) }
+      specify { expect(subject).to be_truthy }
     end
   end
 end

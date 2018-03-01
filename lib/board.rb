@@ -44,47 +44,30 @@ class Board
   end
 
   def row?
-    grid.each do |row|
-      val = row[0]
-      next unless val
-      return true if row.all? { |cell| cell == val }
-    end
-
+    grid.each { |row| return true if row.uniq.first }
     false
   end
 
   def col?
-    first_row = grid[0]
-
-    first_row.each_with_index do |val, col_index|
-      next unless val
-      col = grid.collect { |row| row[col_index] }
-      return true if col.all? { |cell| cell == val }
-    end
-
+    grid.size.times { |index| return true if column(index).uniq.first }
     false
   end
 
+  # Extract the n column from the grid
+  def column(index)
+    grid.collect { |row| row[index] }
+  end
+
   def main_diagonal?
-    val = grid[0][0]
-    return false unless val
-
-    (1..(grid.size - 1 )).each do |index|
-      return false if grid[index][index] != val
-    end
-
-    true
+    grid.collect.with_index do |_val, index|
+      grid[index][index]
+    end.uniq.first
   end
 
   def anti_diagonal?
-    index = grid.size - 1
-    val   = grid[index][0]
-    return false unless val
-
-    (1..index).each do |current|
-      return false if grid[index - current][current] != val
-    end
-
-    true
+    grid.collect.with_index do |_val, index|
+      opposite_index = grid.size - 1 - index
+      grid[opposite_index][opposite_index]
+    end.uniq.first
   end
 end
