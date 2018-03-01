@@ -47,4 +47,12 @@ module Screen
     display(board)
     puts "Nobody won..."
   end
+
+  def self.error(error)
+    puts "\n#{error}! Let's try again...\n\n"
+  end
+
+  def self.bye
+    puts "\n\nQuitting Tic-Tac-Toe by Mickael Pham"
+  end
 end

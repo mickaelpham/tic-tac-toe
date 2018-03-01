@@ -15,6 +15,9 @@ class Game
     NUM_PLAYERS.times { |num| players << Screen.create_player(num + 1) }
 
     @current_player = 0
+  rescue Interrupt
+    Screen.bye
+    abort
   end
 
   def run
@@ -37,6 +40,12 @@ class Game
 
       next_player
     end
+  rescue Board::BoardError => error
+    Screen.error(error)
+    retry
+  rescue Interrupt
+    Screen.bye
+    abort
   end
 
   private

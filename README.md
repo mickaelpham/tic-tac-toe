@@ -16,7 +16,7 @@ bundle exec ruby play.rb
 - [x] Display board, prompt for player names
 - [x] Board checks for victory or tie conditions
 - [x] Main game loop
-- [ ] Handle exception (input check)
+- [x] Handle exception (input check)
 - [ ] Prompt for another game with the same players
 - [ ] Better test coverage
 

@@ -22,7 +22,7 @@ class Board
   end
 
   def place(token, row, col)
-    raise OutOfBoard, "row: #{row}; col: #{col}" if out?(row, col)
+    raise OutOfBoard, "row: #{row}; col: #{col} invalid" if out?(row, col)
     target_row = grid[row]
     raise TokenPresent if target_row[col]
     target_row[col]  = token
