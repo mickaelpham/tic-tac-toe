@@ -1,3 +1,4 @@
+require 'colorize'
 require_relative './player'
 
 module Screen
@@ -13,7 +14,7 @@ module Screen
       print '|'
 
       row.each do |cell|
-        print cell ? " #{cell} |" : " #{cell_num} |"
+        print cell ? " #{cell.colorize(:red)} |" : " #{cell_num} |"
         cell_num += 1
       end
 

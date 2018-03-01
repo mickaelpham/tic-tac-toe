@@ -18,7 +18,9 @@ bundle exec ruby play.rb
 - [x] Main game loop
 - [x] Handle exception (input check)
 - [x] Prompt for another game with the same players
-- [ ] Test coverage
+- [ ] Colorize player tokens in a different color
+      (Need to change the board to store `Player` references)
+- [ ] Needs more test coverage
 
 ## Screenshots
 
