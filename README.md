@@ -23,14 +23,19 @@ bundle exec ruby play.rb
 ## Screenshots
 
 Player prompt
+
 ![screen-01](/img/screen-01.png?raw=true)
 
-During the game (1/2)
+During the game
+
 ![screen-02](/img/screen-02.png?raw=true)
+
 ![screen-03](/img/screen-03.png?raw=true)
 
 Victory screen
+
 ![screen-04](/img/screen-04.png?raw=true)
 
 Tie screen
+
 ![screen-05](/img/screen-05.png?raw=true)
