@@ -2,6 +2,8 @@ require_relative './player'
 
 module Screen
   def self.display(board)
+    clear
+
     grid   = board.grid
     length = grid.size
 
@@ -59,5 +61,13 @@ module Screen
   def self.new_game?
     puts "\n\nPlay another game? (y/N)"
     gets.chomp.casecmp('y').zero?
+  end
+
+  def self.clear
+    if RUBY_PLATFORM.match?(/win32|win64|\.NET|windows|cygwing|mingw32/i)
+      system 'cls'
+    else
+      system 'clear'
+    end
   end
 end
