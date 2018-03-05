@@ -36,21 +36,21 @@ open coverage/index.html
 
 Player prompt
 
-![screen-01](/img/screen-01.png?raw=true)
+<img src="/img/screen-01.png?raw=true" alt="screen-01" width="490">
 
 During the game
 
-![screen-02](/img/screen-02.png?raw=true)
+<img src="/img/screen-02.png?raw=true" alt="screen-02" width="490">
 
-![screen-03](/img/screen-03.png?raw=true)
+<img src="/img/screen-03.png?raw=true" alt="screen-03" width="490">
 
 Victory screen
 
-![screen-04](/img/screen-04.png?raw=true)
+<img src="/img/screen-04.png?raw=true" alt="screen-04" width="490">
 
 Tie screen
 
-![screen-05](/img/screen-05.png?raw=true)
+<img src="/img/screen-05.png?raw=true" alt="screen-05" width="490">
 
 [build_status]: https://travis-ci.org/mickaelpham/tic-tac-toe.svg?branch=master
 [travis]:       https://travis-ci.org/mickaelpham/tic-tac-toe
