@@ -10,7 +10,7 @@ A classic game implemented in Ruby.
 git clone https://github.com/mickaelpham/tic-tac-toe
 cd tic-tac-toe
 bundle install
-bundle exec ruby play.rb
+bundle exec rake play
 ```
 
 ## Features
@@ -23,6 +23,11 @@ bundle exec ruby play.rb
 - [ ] Colorize player tokens in a different color
       (Need to change the board to store `Player` references)
 - [ ] Needs more test coverage
+
+```sh
+# run the linters and specs
+bundle exec rake
+```
 
 ## Screenshots
 

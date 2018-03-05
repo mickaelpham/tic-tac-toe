@@ -31,14 +31,14 @@ module Screen
 
   def self.prompt(player)
     puts "[#{player.name}] Place token (#{player.token}) at: "
-    gets.chomp.to_i - 1 # we offer human-friendly interaction
+    STDIN.gets.chomp.to_i - 1 # we offer human-friendly interaction
   end
 
   def self.create_player(number)
     puts "P#{number} name: "
-    name = gets.chomp
+    name = STDIN.gets.chomp
     puts "P#{number} token (1 character, e.g., 'X'): "
-    token = gets.chomp[0]
+    token = STDIN.gets.chomp[0]
     puts
     Player.new(name, token)
   end
@@ -63,7 +63,7 @@ module Screen
 
   def self.new_game?
     puts "\n\nPlay another game? (y/N)"
-    gets.chomp.casecmp('y').zero?
+    STDIN.gets.chomp.casecmp('y').zero?
   end
 
   def self.clear
