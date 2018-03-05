@@ -2,6 +2,9 @@ AllCops:
   DisplayStyleGuide: true
   DisplayCopNames: true
 
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
 Lint/HandleExceptions:
   Exclude:
     - Rakefile

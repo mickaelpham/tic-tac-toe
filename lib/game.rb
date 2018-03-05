@@ -13,11 +13,9 @@ class Game
     @players = []
     setup_players
   rescue Interrupt
-    Screen.bye
-    abort
+    quit_game
   end
 
-  # rubocop:disable Metrics/MethodLength
   def run
     until board.victory? || board.full?
       prompt_player
@@ -29,10 +27,8 @@ class Game
     Screen.error(error)
     retry
   rescue Interrupt
-    Screen.bye
-    abort
+    quit_game
   end
-  # rubocop:enable Metrics/MethodLength
 
   private
 
@@ -67,5 +63,10 @@ class Game
     @board          = Board.new(DEFAULT_BOARD_DIMENSION)
     @current_player = players.first
     run # FIXME: possible stack overflow if we play enough games
+  end
+
+  def quit_game
+    Screen.bye
+    abort
   end
 end
