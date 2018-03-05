@@ -6,3 +6,4 @@ gem 'rake'
 gem 'reek'
 gem 'rspec'
 gem 'rubocop'
+gem 'simplecov', require: false

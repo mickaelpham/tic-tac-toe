@@ -8,8 +8,9 @@ module Screen
     yellow
     green
     white
-  ]
+  ].freeze
 
+  # rubocop:disable Metrics/AbcSize
   def self.display(board)
     clear
 
@@ -40,6 +41,7 @@ module Screen
     puts delimiter(length)
     puts
   end
+  # rubocop:enable Metrics/AbcSize
 
   def self.delimiter(length)
     "+#{'---+' * length}"
