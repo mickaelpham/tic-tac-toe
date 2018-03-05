@@ -20,8 +20,7 @@ bundle exec rake play
 - [x] Main game loop
 - [x] Handle exception (input check)
 - [x] Prompt for another game with the same players
-- [ ] Colorize player tokens in a different color
-      (Need to change the board to store `Player` references)
+- [x] Colorize player tokens in a different color
 - [ ] Needs more test coverage
 
 ### Tests
