@@ -2,6 +2,14 @@ require 'colorize'
 require_relative './player'
 
 module Screen
+  COLORS = %i[
+    light_cyan
+    red
+    yellow
+    green
+    white
+  ]
+
   def self.display(board)
     clear
 
@@ -9,12 +17,20 @@ module Screen
     length   = grid.size
     cell_num = 1
 
+    tokens = grid.flatten.uniq
+
     grid.each do |row|
       puts delimiter(length)
       print '|'
 
       row.each do |cell|
-        print cell ? " #{cell.colorize(:red)} |" : " #{cell_num} |"
+        if cell
+          color = COLORS[tokens.rindex(cell)]
+          print " #{cell.colorize(color)} |"
+        else
+          print " #{cell_num} |"
+        end
+
         cell_num += 1
       end
 
