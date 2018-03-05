@@ -24,6 +24,8 @@ bundle exec rake play
       (Need to change the board to store `Player` references)
 - [ ] Needs more test coverage
 
+### Tests
+
 ```sh
 # run the linters and specs
 bundle exec rake
