@@ -21,13 +21,15 @@ bundle exec rake play
 - [x] Handle exception (input check)
 - [x] Prompt for another game with the same players
 - [x] Colorize player tokens in a different color
-- [ ] Needs more test coverage
+- [x] Thorough test coverage (100%)
 
 ### Tests
 
 ```sh
 # run the linters and specs
 bundle exec rake
+# open the code coverage report
+open coverage/index.html
 ```
 
 ## Screenshots

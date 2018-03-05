@@ -1,6 +1,48 @@
 require_relative '../lib/screen'
 
 RSpec.describe Screen do
+  describe '#display' do
+    let(:board) { instance_double(Board, grid: grid) }
+
+    subject { described_class.display(board) }
+
+    context 'empty board' do
+      let(:grid) { [[nil]] }
+
+      before do
+        allow(described_class).to receive(:clear)
+      end
+
+      specify do
+        expect(described_class).to receive(:puts).with('+---+').twice
+        expect(described_class).to receive(:print).with('|')
+        expect(described_class).to receive(:print).with(' 1 |')
+        expect(described_class).to receive(:puts).twice
+        subject
+      end
+
+      context 'board with a player token' do
+        let(:grid) { [['X']] }
+
+        before do
+          allow(described_class).to receive(:clear)
+        end
+
+        specify do
+          expect(described_class).to receive(:puts).with('+---+').twice
+          expect(described_class).to receive(:print).with('|')
+
+          # light cyan token
+          expect(described_class).
+            to receive(:print).with(" \e[0;96;49mX\e[0m |")
+
+          expect(described_class).to receive(:puts).twice
+          subject
+        end
+      end
+    end
+  end
+
   describe '#delimiter' do
     subject { described_class.delimiter(length) }
 

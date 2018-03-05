@@ -16,7 +16,7 @@ RSpec.describe Game do
   end
 
   describe '#setup_players' do
-    before  do
+    before do
       allow(Screen).to receive(:create_player).and_raise(Interrupt)
       allow(Screen).to receive(:bye)
     end
