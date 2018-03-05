@@ -1,3 +1,5 @@
+[![Build Status][build_status]][travis]
+
 # Tic-Tac-Toe
 
 A classic game implemented in Ruby.
@@ -41,3 +43,6 @@ Victory screen
 Tie screen
 
 ![screen-05](/img/screen-05.png?raw=true)
+
+[build_status]: https://travis-ci.org/mickaelpham/tic-tac-toe.svg?branch=master
+[travis]:       https://travis-ci.org/mickaelpham/tic-tac-toe
