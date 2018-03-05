@@ -1,0 +1,26 @@
+AllCops:
+  DisplayStyleGuide: true
+  DisplayCopNames: true
+
+Lint/HandleExceptions:
+  Exclude:
+    - Rakefile
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/MethodLength:
+  Exclude:
+    - lib/screen.rb
+
+Style/BlockComments:
+  Exclude:
+    - spec/spec_helper.rb
+
+Style/Documentation:
+  Enabled: false
+
+Style/WordArray:
+  Exclude:
+    - spec/board_spec.rb # the examples look better with 'X' and nil aligned

@@ -11,34 +11,17 @@ class Game
   def initialize
     @board   = Board.new(DEFAULT_BOARD_DIMENSION)
     @players = []
-
-    NUM_PLAYERS.times { |num| players << Screen.create_player(num + 1) }
-
-    @current_player = 0
+    setup_players
   rescue Interrupt
     Screen.bye
     abort
   end
 
+  # rubocop:disable Metrics/MethodLength
   def run
     until board.victory? || board.full?
-      player = players[current_player]
-      Screen.display(board)
-
-      position = Screen.prompt(player)
-
-      board.place(
-        player.token,
-        position / DEFAULT_BOARD_DIMENSION,
-        position % DEFAULT_BOARD_DIMENSION
-      )
-
-      victory = board.victory?
-
-      Screen.victory(board, player) if victory
-      Screen.tie(board) if !victory && board.full?
-
-      next_player
+      prompt_player
+      end_of_turn
     end
 
     new_game if Screen.new_game?
@@ -49,20 +32,40 @@ class Game
     Screen.bye
     abort
   end
+  # rubocop:enable Metrics/MethodLength
 
   private
 
+  def setup_players
+    NUM_PLAYERS.times { |num| players << Screen.create_player(num + 1) }
+    @current_player = players.first
+  end
+
   def next_player
-    if (current_player + 1) == players.size
-      @current_player = 0
-    else
-      @current_player += 1
-    end
+    index           = players.rindex(current_player) + 1
+    @current_player = players.fetch(index, players.first)
+  end
+
+  def prompt_player
+    Screen.display(board)
+    position = Screen.prompt(current_player)
+    board.place(
+      current_player.token,
+      position / DEFAULT_BOARD_DIMENSION,
+      position % DEFAULT_BOARD_DIMENSION
+    )
+  end
+
+  def end_of_turn
+    victory = board.victory?
+    Screen.victory(board, current_player) if victory
+    Screen.tie(board) if !victory && board.full?
+    next_player
   end
 
   def new_game
     @board          = Board.new(DEFAULT_BOARD_DIMENSION)
-    @current_player = 0
+    @current_player = players.first
     run # FIXME: possible stack overflow if we play enough games
   end
 end

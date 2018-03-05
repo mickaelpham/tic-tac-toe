@@ -1,0 +1,24 @@
+---
+
+IrresponsibleModule:
+  enabled: false
+
+DuplicateMethodCall:
+  exclude:
+    - Game#run
+    - Screen#self.create_player
+    - Screen#self.display
+
+FeatureEnvy:
+  exclude:
+    - Board#row?
+
+NestedIterators:
+  exclude:
+    - Screen#self.display
+
+TooManyStatements:
+  exclude:
+    - Game#run
+    - Screen#self.create_player
+    - Screen#self.display

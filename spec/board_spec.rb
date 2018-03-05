@@ -56,7 +56,7 @@ RSpec.describe Board do
         [
           ['X', nil, nil],
           [nil, nil, nil],
-          [nil, nil, nil],
+          [nil, nil, nil]
         ]
       end
 
@@ -76,7 +76,7 @@ RSpec.describe Board do
   end
 
   describe 'full?' do
-    let(:max_moves) { dimension ** 2 }
+    let(:max_moves) { dimension**2 }
     subject         { board.full? }
 
     context 'not yet' do
@@ -108,7 +108,7 @@ RSpec.describe Board do
         [
           [nil, nil, nil],
           [nil, nil, nil],
-          [nil, nil, nil],
+          [nil, nil, nil]
         ]
       end
 
@@ -132,7 +132,7 @@ RSpec.describe Board do
         [
           ['X', 'X', 'X'],
           [nil, nil, nil],
-          [nil, nil, nil],
+          [nil, nil, nil]
         ]
       end
 

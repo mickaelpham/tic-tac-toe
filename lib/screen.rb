@@ -50,7 +50,7 @@ module Screen
 
   def self.tie(board)
     display(board)
-    puts "Nobody won..."
+    puts 'Nobody won...'
   end
 
   def self.error(error)

@@ -34,7 +34,7 @@ class Board
   end
 
   def full?
-    moves >= (grid.size ** 2)
+    moves >= (grid.size**2)
   end
 
   private
