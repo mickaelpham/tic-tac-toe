@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'colorize'
-gem 'pry'
+gem 'pry-byebug', require: false
 gem 'rake'
 gem 'reek'
 gem 'rspec'

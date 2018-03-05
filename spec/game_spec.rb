@@ -15,6 +15,11 @@ RSpec.describe Game do
     allow(Screen).to receive(:create_player).and_return(*players)
   end
 
+  describe '#setup_players' do
+    before  { allow(Screen).to receive(:create_player).and_raise(Interrupt) }
+    specify { expect { instance }.to raise_error(SystemExit) }
+  end
+
   describe '#board' do
     subject(:board) { instance.board }
     specify { expect(board.full?).to    be_falsey }
@@ -48,7 +53,6 @@ RSpec.describe Game do
         allow(board).to  receive(:victory?).and_return(*turns)
         allow(board).to  receive(:full?).and_return(false)
         allow(Screen).to receive(:display).with(board)
-        allow(Screen).to receive(:prompt).with(players.first).and_return(input)
       end
 
       context '[player prompt invalid]' do
@@ -58,6 +62,8 @@ RSpec.describe Game do
           allow(board).to receive(:place).and_raise(Board::BoardError)
           allow(Screen).to receive(:error)
           allow(Screen).to receive(:new_game?)
+          allow(Screen).
+            to receive(:prompt).with(players.first).and_return(input)
         end
 
         it 'asks the same player again after displaying an error message' do
@@ -73,6 +79,8 @@ RSpec.describe Game do
         before do
           allow(board).to receive(:place)
           allow(Screen).to receive(:new_game?)
+          allow(Screen).
+            to receive(:prompt).with(players.first).and_return(input)
         end
 
         it 'adds the token then goes to the next player' do
@@ -81,15 +89,15 @@ RSpec.describe Game do
         end
       end
 
-      xcontext '[CTRL-C pressed]' do
+      context '[CTRL-C pressed]' do
         before do
+          allow(Screen).to receive(:bye)
           allow(Screen).
             to receive(:prompt).with(players.first).and_raise(Interrupt)
         end
 
         it 'quits the program' do
-          expect(Screen).to receive(:bye)
-          run
+          expect { run }.to raise_error(SystemExit)
         end
       end
     end
